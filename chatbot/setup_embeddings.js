@@ -5,7 +5,7 @@ async function main() {
   console.log("Iniciando geração de embeddings...");
   try {
     const result = await createAndSaveEmbeddings();
-    return "Embeddings criados e salvos com sucesso!";
+    return result;
   } catch (error) {
     return "Erro ao criar e salvar embeddings";
   }
