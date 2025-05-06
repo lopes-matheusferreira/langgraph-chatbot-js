@@ -69,6 +69,9 @@ Você é um assistente virtual especializado exclusivamente na Câmara Municipal
 5. Se o usuário insistir em respostas não disponíveis, sugira: "Por favor, digite 'atendente' para falar com um atendente."
 6. Para perguntas sobre orçamento detalhado, sugira: "Você pode verificar mais detalhes na funcionalidade 'Orçamentos e Finanças' do Pêndulo."
 7. Jamais invente uma resposta. Caso o contexto recuperado da base de contexto fornecida, não seja o suficiente, responda: "Sinto muito, mas não tenho essa informação."
+8. Quando o usuário pedir para que você fale sobre muitas entidades de uma só vez, mais do que 3, por exemplo. Diga: "Preciso que seja mais específico, são muitas informações. Por favor, me diga qual vereador você gostaria de saber mais." Por exemplo:
+- Usuário: "Me fale sobre todos os vereadores do PSOL." Sistema: "Preciso que seja mais específico, são muitas informações. Por favor, me diga qual vereador você gostaria de saber mais.", Usuário:"Me fale mais sobre Me fale mais sobre Adrilles Jorge, Amanda Vettorazzo, Ricardo Teixeira, Rubinho Nunes, Silvão Leite, Silvinho Leite e Pastora Sandra Alves." Sistema: "Preciso que seja mais específico, são muitas informações. Por favor, me diga qual vereador você gostaria de saber mais."
+Caso sejam menos de 4, você pode responder normalmente, mas sempre com o cuidado de não trazer informações que não sejam relevantes para o contexto atual.
 
 **Exemplos**:
 - Usuário: "Quem é Ana Carolina?" Sistema: "Ana Carolina Oliveira, nascida em 05/04/1984 em São Paulo, é vereadora eleita em 2024. Trabalha na proteção de crianças, adolescentes e mulheres, com projetos como o PL 351/2025 contra violência sexual."
@@ -109,6 +112,9 @@ Vou te contextualizar sobre algo importante para que voce^gere queries de maior 
 
 Lembre-se que o tema desse projeto é Câmara Municipal de São Paulo e seus vereadores. Leve isso em consideração quando for gerar queries. Procure assimilar o que foi dito com o tema proposto, antes de gerar a query.
 Procure corrigir erros de português, quando necessário.
+
+Sempre que o input pedir informações genéricas sobre algum vereador, especifique, biografia do vereador. Por exemplo: Usuário:"Me fale sobre Sandra Tadeu" Query: "Me fale sobre a biografia de Sandra Tadeu".
+Usuário:"Me fale mais sobre eles" - Query: "Me fale sobre a biografia de (mencione todas as entidades coerentes ao contexto)."
 
 É importante ressaltar que on inputs que você receberá podem ser de diversos tipos, como agradecimentos, pedidos de desculpas, saudações... Nesses casos, entenda
 o que o usuário quis expressar e gere uma query que exija pouco do retriever e não altere a intenção do usuário.
@@ -251,14 +257,14 @@ const callModel = async state => {
                 /*------------------------------------------------+
                 |================= QUICK DEBUG ===================|
                 +------------------------------------------------*/
-                // console.log("Pergunta original:", lastMessage);
-                // console.log("Query do retriever:", retrieverQuery);
-                // console.log("Mensagens recentes:", recentMessages);
-                // console.log(
-                //     "Documentos recuperados:",
-                //     relevantDocs.map(doc => doc.pageContent),
-                // );
-                // console.log("Resposta bruta:", response);
+                console.log("Pergunta original:", lastMessage);
+                console.log("Query do retriever:", retrieverQuery);
+                console.log("Mensagens recentes:", recentMessages);
+                console.log(
+                    "Documentos recuperados:",
+                    relevantDocs.map(doc => doc.pageContent),
+                );
+                console.log("Resposta bruta:", response);
 
                 let responseText = response.content;
                 if (
