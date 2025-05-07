@@ -72,6 +72,7 @@ Você é um assistente virtual especializado exclusivamente na Câmara Municipal
 8. Quando o usuário pedir para que você fale sobre muitas entidades de uma só vez, mais do que 3, por exemplo. Diga: "Preciso que seja mais específico, são muitas informações. Por favor, me diga qual vereador você gostaria de saber mais." Por exemplo:
 - Usuário: "Me fale sobre todos os vereadores do PSOL." Sistema: "Preciso que seja mais específico, são muitas informações. Por favor, me diga qual vereador você gostaria de saber mais.", Usuário:"Me fale mais sobre Me fale mais sobre Adrilles Jorge, Amanda Vettorazzo, Ricardo Teixeira, Rubinho Nunes, Silvão Leite, Silvinho Leite e Pastora Sandra Alves." Sistema: "Preciso que seja mais específico, são muitas informações. Por favor, me diga qual vereador você gostaria de saber mais."
 Caso sejam menos de 4, você pode responder normalmente, mas sempre com o cuidado de não trazer informações que não sejam relevantes para o contexto atual.
+Se atente ao fato de que se for apenas uma lista, sem informações complexas, você pode responder. Tipo, "liste todos os vereadores do partido PT".
 
 **Exemplos**:
 - Usuário: "Quem é Ana Carolina?" Sistema: "Ana Carolina Oliveira, nascida em 05/04/1984 em São Paulo, é vereadora eleita em 2024. Trabalha na proteção de crianças, adolescentes e mulheres, com projetos como o PL 351/2025 contra violência sexual."
@@ -87,7 +88,7 @@ const retrievalPromptTemplate = ChatPromptTemplate.fromMessages([
         "system",
         `
 Você é um assistente especializado em gerar queries otimizadas para um retriever de documentos. Sua tarefa é analisar a última pergunta do usuário e o contexto da conversa (mensagens recentes) para criar uma query clara, específica e concisa que será usada para buscar documentos relevantes.
-Apenas passe a query otimizada, sem explicações ou raciocínios adicionais. A query deve ser em português.
+Apenas passe a query otimizada, sem explicações, raciocínios adicionais ou informações adicionais. Por exemplo: Não coloque algo antes da query em si, como "Query: query otimizada", envie apenas "query otimizada". A query deve ser em português.
 Entenda o seguinte, você não é um assistente de IA, você é um gerador de queries para um retriever de documentos. Você não deve responder perguntas ou fornecer informações, apenas gerar a query.
 A query gerada por você será usada por um retriever de documentos, que buscará informações relevantes e as entregará para outro modelo llm que irá gerar uma resposta ao usuário final. Portanto, entenda que você está se comunicando com outra máquina e não com um ser humano.
 Gere queries de qualidade, especifique as entidades questionadas, se necessário, e sempre se baseie no contexto e na pergunta final.
@@ -108,7 +109,7 @@ Query: "Me fale mais sobre o vereador Hélio Rodrigues e o vereador Dr. Milton F
 Lembre-se, caso a query já esteja clara e não precise de ajustes, você pode apenas passar a query original. Mas sempre busque otimizar a query para que ela seja o mais clara e específica possível.
 Limpe informações que não sejam necessárias para a busca.
 Para te contextualizar, você faz queries para um retriever de documentos sobre a Câmara Municipal de São Paulo e seus vereadores.
-Vou te contextualizar sobre algo importante para que voce^gere queries de maior qualidade e precisão. Os partidos políticos na política brasileira são: MDB, PDT, PT, PCdoB, PSB, PSDB, AGIR, MOBILIZA, CIDADANIA, PV, AVANTE, PP, PSTU, PCB, PRTB, DC, PCO, PODE, REPUBLICANOS, PSOL, PL, PSD, SOLIDARIEDADE, NOVO, REDE, PMB, UP, UNIÃO, PRD. Leve isso em consideração quando for interpretar os inputs.
+Vou te contextualizar sobre algo importante para que você gere queries de maior qualidade e precisão. Os partidos políticos na política brasileira são: MDB, PDT, PT, PCdoB, PSB, PSDB, AGIR, MOBILIZA, CIDADANIA, PV, AVANTE, PP, PSTU, PCB, PRTB, DC, PCO, PODE, REPUBLICANOS, PSOL, PL, PSD, SOLIDARIEDADE, NOVO, REDE, PMB, UP, UNIÃO, PRD. Leve isso em consideração quando for interpretar os inputs.
 
 Lembre-se que o tema desse projeto é Câmara Municipal de São Paulo e seus vereadores. Leve isso em consideração quando for gerar queries. Procure assimilar o que foi dito com o tema proposto, antes de gerar a query.
 Procure corrigir erros de português, quando necessário.
@@ -220,23 +221,19 @@ const callModel = async state => {
                 console.error("Erro ao gerar query:", error);
                 retrieverQuery = lastMessage;
             }
-
+            console.log("olpa", retrieverQuery)
             if (retrieverQuery === "lista completa de vereadores") {
                 const answer = list;
-                console.log(lastMessage);
-                console.log("query", retrieverQuery);
                 return {
                     messages: [
                         new AIMessage({
                             content: answer,
                         }),
+                        ...state.messages.slice(-3),
                     ],
-                    ...state.messages.slice(-3),
                 };
             } else {
-                const relevantDocs = await retriever.getRelevantDocuments(
-                    retrieverQuery,
-                );
+                const relevantDocs = await retriever.getRelevantDocuments(retrieverQuery,);
 
                 const contextText =
                     relevantDocs.length > 0
@@ -257,14 +254,14 @@ const callModel = async state => {
                 /*------------------------------------------------+
                 |================= QUICK DEBUG ===================|
                 +------------------------------------------------*/
-                console.log("Pergunta original:", lastMessage);
-                console.log("Query do retriever:", retrieverQuery);
-                console.log("Mensagens recentes:", recentMessages);
-                console.log(
-                    "Documentos recuperados:",
-                    relevantDocs.map(doc => doc.pageContent),
-                );
-                console.log("Resposta bruta:", response);
+                 console.log("Pergunta original:", lastMessage);
+                 console.log("Query do retriever:", retrieverQuery);
+                 console.log("Mensagens recentes:", recentMessages);
+                 console.log(
+                     "Documentos recuperados:",
+                     relevantDocs.map(doc => doc.pageContent),
+                 );
+                 console.log("Resposta bruta:", response);
 
                 let responseText = response.content;
                 if (
