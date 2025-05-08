@@ -21,7 +21,7 @@ const deserializeMessages = (serializedMessages) => {
   });
 };
 
-const { chatApp } = require('../../chatbot/llm_config.js');
+const { chatApp } = require('../../chatbot/initialize_llm.js');
 
 async function processCreateConversation(threadId, initialMessages) {
   if (initialMessages && !Array.isArray(initialMessages)) {

@@ -76,7 +76,7 @@ const list = `A lista completa de vereadores é:
     
     PSB (2 vereadores)
     53. Renata Falzoni
-    54. Rodrigo Goulart
+    54. Elisei Gabriel
     
     PV (1 vereador)
     55. Roberto Trípoli`

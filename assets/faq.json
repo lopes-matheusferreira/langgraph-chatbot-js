@@ -10,6 +10,36 @@
     ]
   },
   {
+    "question": "Quais são os canais de atendimento da Câmara Municipal de São Paulo?",
+    "answer": "Os cidadãos podem entrar em contato com a Câmara Municipal de São Paulo pelos seguintes canais: Telefone da Câmara: 3396-4000, das 10h às 19h; Número da Ouvidoria: 0800-3-226272, das 8h às 19h; Atendimento presencial na Câmara Municipal de São Paulo: Viaduto Jacareí, 100 – 2o andar, das 9h às 18h; Fale Conosco: Canal de comunicação disponível no Portal da Câmara Municipal de São Paulo; E-mail da Ouvidoria/Câmara: o e-mail para contato é ouvidoria@saopaulo.sp.leg.br",
+    "links": []
+  },
+  {
+    "question": "Qual o prazo de resposta para solicitações enviadas à Ouvidoria?",
+    "answer": "O prazo máximo de resposta é de 10 dias.",
+    "links": []
+  },
+  {
+    "question": "A Câmara faz atendimento presencial?",
+    "answer": "Sim! A Câmara Municipal de São Paulo tem o serviço de atendimento presencial!",
+    "links": []
+  },
+  {
+    "question": "Como funciona o atendimento presencial na Câmara?",
+    "answer": "O atendimento presencial é no endereço: Viaduto Jacareí, 100 – 2o andar, das 9h às 18h.",
+    "links": []
+  },
+  {
+    "question": "Quais são os outros contatos disponíveis?",
+    "answer": "É possível entrar em contato com a Câmara Municipal de São Paulo também para: Inspetoria da Câmara Municipal: 3396-4230; Núcleo Técnico de Controle Interno: 3396-4538; Gabinetes dos Vereadores.",
+    "links": []
+  },
+  {
+    "question": "O que a Ouvidoria faz com as manifestações recebidas?",
+    "answer": "A Ouvidoria analisa as manifestações e encaminha-as ao departamento responsável.",
+    "links": []
+  },
+  {
     "question": "2 – Como faço para obter cópia de registros em vídeos de eventos que ocorrem na Câmara Municipal de São Paulo?",
     "answer": "Para obter uma cópia do vídeo de algum evento que ocorreu na Câmara, você pode:Pesquisar e localizar o evento no Canal oficial da Câmara no Youtube e realizar o download diretamente da plataforma.OUSolicitar por email a ouvidoria@saopaulo.sp.leg.br, dando o maior número de informações para que possamos identificar o evento, como: o nome do evento, data, promovente, horário e auditório em que ocorreu. É importante informar se deseja receber sua cópia por email via \"we transfer\" ou se prefere trazer sua mídia própria, para a realização da cópia, até o Palácio Anchieta.",
     "links": [
@@ -458,6 +488,56 @@
     "links": []
   },
   {
+    "question": "O que são audiências públicas?",
+    "answer": "As Audiências Públicas são um instrumento de participação popular criado pela Constituição Federal de 1988, permitindo que cidadãos, órgãos públicos e entidades civis debatam questões de interesse público ou opinem sobre propostas em tramitação na Câmara.",
+    "links": []
+  },
+  {
+    "question": "Como faço para participar das reuniões da Câmara ou de uma Audiência Pública?",
+    "answer": "Basta acessar a página de uma das Audiências Públicas agendadas no site da Câmara. O cidadão pode se inscrever para participar por videoconferência ou enviar sua proposta por escrito.",
+    "links": []
+  },
+  {
+    "question": "Quais são as formas de participação nas Audiências Públicas?",
+    "answer": "Existem duas formas de participar: 1) Ao vivo: Inscreva-se com antecedência e fale por até 3 minutos (ordem de inscrição e sujeito a limites), seguindo as regras do Regimento Interno da Câmara; 2) Por escrito: Preencha o formulário online. A manifestação será enviada aos vereadores e pode ser lida durante a audiência.",
+    "links": []
+  },
+  {
+    "question": "Como enviar contribuições por escrito para uma Audiência Pública?",
+    "answer": "Há um formulário disponível na página de detalhes de cada Audiência Pública. As contribuições por escrito são aceitas até o final do evento.",
+    "links": []
+  },
+  {
+    "question": "É possível protocolar manifestações presencialmente?",
+    "answer": "Sim. As manifestações podem ser protocoladas no protocolo legislativo da Câmara ou na Secretaria da respectiva Comissão, localizada no Viaduto Jacareí, 100, Bela Vista, 2º andar, salas 213-A ou 210.",
+    "links": []
+  },
+  {
+    "question": "Como assistir às Audiências Públicas sem participar?",
+    "answer": "Todos os eventos são transmitidos ao vivo na seção 'Auditórios Online' do portal da Câmara Municipal de São Paulo e também pelo canal oficial da Câmara no YouTube.",
+    "links": []
+  },
+  {
+    "question": "Como as audiências públicas foram adaptadas durante a pandemia?",
+    "answer": "Durante a pandemia, foram instituídas as Audiências Públicas virtuais, permitindo que os munícipes continuassem acompanhando e participando das discussões online. Essa adaptação obteve resultados positivos em 2021.",
+    "links": []
+  },
+  {
+    "question": "Quais são os tipos de sessões realizadas na Câmara?",
+    "answer": "A Câmara realiza três tipos principais de sessões: Sessões Ordinárias (dias e horários fixos para discutir e votar projetos), Sessões Extraordinárias (convocadas para assuntos urgentes, fora do calendário regular) e Sessões Solenes (para homenagens e eventos especiais).",
+    "links": []
+  },
+  {
+    "question": "O que são comissões permanentes e temporárias?",
+    "answer": "Comissões Permanentes são grupos de vereadores que analisam projetos e matérias específicas, como as Comissões de Finanças, Saúde e Educação. Comissões Temporárias são criadas para assuntos específicos ou emergenciais, como CPIs (Comissões Parlamentares de Inquérito).",
+    "links": []
+  },
+  {
+    "question": "O que é uma CPI (Comissão Parlamentar de Inquérito)?",
+    "answer": "Uma CPI é uma comissão temporária criada para investigar fatos específicos de interesse público. Possui poderes de investigação, como convocar testemunhas e requisitar documentos.",
+    "links": []
+  },
+  {
     "question": "Quais são os deveres do Vereador?",
     "answer": "Conforme dispõe o Art. 109 do Regimento Interno da Câmara Municipal de São Paulo, os deveres dos Vereadores são: Art. 109 - São deveres do Vereador: I - residir no Município; II - comparecer à hora regimental, nos dias designados para a abertura das sessões, nelas permanecendo até o seu término; III - votar as proposições submetidas à deliberação da Câmara, salvo quando tiver, ele próprio ou parente afim ou consanguíneo até o 3º grau inclusive, interesse manifesto na deliberação, sob pena de nulidade da votação quando seu voto for decisivo; IV - desempenhar-se dos encargos que lhe forem cometidos, salvo motivo justo alegado perante o Presidente, a Mesa ou a Câmara, conforme o caso; V - comparecer às reuniões das Comissões Permanentes e Temporárias das quais seja integrante, prestando informações, emitindo pareceres nos processos a ele distribuídos, com a observância dos prazos regimentais; VI - propor à Câmara todas as medidas que julgar convenientes aos interesses do Município e à segurança e ao bem-estar dos munícipes, bem como impugnar as que lhe pareçam contrárias ao interesse público; VII - comunicar sua falta ou ausência, quando tiver motivo justo para deixar de comparecer às sessões plenárias ou às reuniões das Comissões; VIII - observar o disposto no artigo 17 da Lei Orgânica do Município.",
     "links": []
@@ -490,6 +570,51 @@
   {
     "question": "A quem cabe a iniciativa de um projeto de Lei?",
     "answer": "Os projetos de Lei podem ser propostos pelo prefeito, pelos vereadores, pelos cidadãos, comissões e pela Mesa Diretora da Câmara, como dispõe o Art. 37 da Lei Orgânica do Município:Art. 37 - A iniciativa das leis cabe a qualquer membro ou Comissão permanente da Câmara Municipal, ao Prefeito e aos cidadãos, na forma e nos casos previstos nesta Lei Orgânica. § 1º - Compete exclusivamente à Câmara Municipal a iniciativa das leis que disponham sobre os Conselhos de Representantes, previstos na seção VIII deste capítulo. § 2º - São de iniciativa privativa do Prefeito as leis que disponham sobre:I - criação, extinção ou transformação de cargos, funções ou empregos públicos na administração direta, autárquica e fundacional; II - fixação ou aumento de remuneração dos servidores; III - servidores públicos, municipais, seu regime jurídico, provimento de cargos, estabilidade e aposentadoria; IV - organização administrativa e matéria orçamentária; (Alterado pela Emenda 28/06) V - desafetação, aquisição, alienação e concessão de bens imóveis municipais.",
+    "links": []
+  },
+  {
+    "question": "Qual é o organograma/Mesa diretora da Câmara?",
+    "answer": "O presidente da Câmara Municipal de São Paulo em 2025 é o Vereador Ricardo Teixeira (UNIÃO). Os vice-presidentes são: 1º Vice-Presidente, Vereador João Jorge (MDB), e 2º Vice-Presidente, Vereador Isac Félix (PL). Os secretários da Mesa Diretora são: 1º Secretário, Vereador Hélio Rodrigues (PT), e 2º Secretário, Vereador Dr. Milton Ferreira (PODEMOS). Os suplentes da Mesa Diretora são: 1ª Suplente, Vereadora Edir Sales (PSD), e 2º Suplente, Vereador Bombeiro Major Palumbo (PP). O Corregedor-Geral da Câmara é o Vereador Rubinho Nunes. Os suplentes em exercício atualmente são Paulo Frange e Carlos Bezerra Jr.",
+    "links": []
+  },
+  {
+    "question": "Qual é o organograma administrativo da Câmara?",
+    "answer": "No momento não tenho informações sobre o organograma administrativo da Câmara.",
+    "links": []
+  },
+  {
+    "question": "Qual é a composição da Mesa Diretora da Câmara?",
+    "answer": "A Mesa Diretora da Câmara é composta pelos seguintes cargos: Presidente, 1º Vice-Presidente, 2º Vice-Presidente, 1º Secretário, 2º Secretário, 1º Suplente e 2º Suplente.",
+    "links": []
+  },
+  {
+    "question": "Qual é a função do Presidente da Câmara?",
+    "answer": "O Presidente dirige os trabalhos legislativos, coordena as sessões e representa a Câmara Municipal em atos oficiais e institucionais.",
+    "links": []
+  },
+  {
+    "question": "Qual é a função do 1º Vice-Presidente da Câmara?",
+    "answer": "O 1º Vice-Presidente substitui o Presidente em suas ausências ou impedimentos, assumindo temporariamente suas atribuições.",
+    "links": []
+  },
+  {
+    "question": "Qual é a função do 2º Vice-Presidente da Câmara?",
+    "answer": "O 2º Vice-Presidente apoia o Presidente e o 1º Vice-Presidente, substituindo-os sequencialmente em caso de ausências consecutivas.",
+    "links": []
+  },
+  {
+    "question": "Qual é a função do 1º Secretário da Câmara?",
+    "answer": "O 1º Secretário é responsável pela organização das sessões legislativas, verificação de votos e autenticação de documentos oficiais da Câmara.",
+    "links": []
+  },
+  {
+    "question": "Qual é a função do 2º Secretário da Câmara?",
+    "answer": "O 2º Secretário auxilia o 1º Secretário nas tarefas de organização das sessões e documentação, assumindo suas funções em caso de ausência.",
+    "links": []
+  },
+  {
+    "question": "Qual é a função dos Secretários Suplentes da Câmara?",
+    "answer": "Os Secretários Suplentes substituem os titulares (1º e 2º Secretários) em caso de ausência, garantindo a continuidade dos trabalhos legislativos.",
     "links": []
   },
   {
@@ -526,6 +651,11 @@
     "question": "Para onde devo me dirigir se estou com problema de enchente em minha residência?",
     "answer": "Pode se dirigir à Ouvidoria da Prefeitura de São Paulo ou no atendimento ao cidadão pelo telefone 156.",
     "links": []
+  },
+  {
+      "question": "Quais são os partidos representados na Câmara Municipal de São Paulo?",
+      "answer": "Os partidos atuantes na Câmara Municipal de São Paulo são: MDB – Movimento Democrático Brasileiro, NOVO – Partido Novo, PL – Partido Liberal, PODEMOS – Podemos, PP – Progressistas, PSB – Partido Socialista Brasileiro, PSD – Partido Social Democrático, PSOL – Partido Socialismo e Liberdade, PT – Partido dos Trabalhadores, PV – Partido Verde, REDE – Rede Sustentabilidade, REPUBLICANOS – Republicanos, UNIÃO – União Brasil.",
+      "links": []
   },
   {
     "question": "Lista completa de vereadores do PSOL?",
@@ -584,7 +714,7 @@
   },
   {
     "question": "Lista completa de vereadores do PSB?",
-    "answer": "1. Renata Falzoni\n2. Rodrigo Goulart",
+    "answer": "1. Renata Falzoni\n2. Eliseu Gabriel",
     "links": []
   },
   {
