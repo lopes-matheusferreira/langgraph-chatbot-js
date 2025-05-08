@@ -1,4 +1,6 @@
-#  Assistente Virtual da Câmara Municipal de SP
+#  Assistente Virtual 
+
+Projeto desenvolvido como teste e demonstração pela empresa Optimus DataTechnology
 
 **Solução de IA especializada** em processos legislativos e dados dos 55 vereadores da Câmara Municipal de São Paulo (19ª legislatura, 2025-2028). Projeto desenvolvido para o Pêndulo utilizando:
 
