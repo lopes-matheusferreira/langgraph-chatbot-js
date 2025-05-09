@@ -11,8 +11,8 @@ const DOCS_PATH = path.join(DATABASE_DIRECTORY, "docs.json");
 
 async function createAndSaveEmbeddings() {
     /*------------------------------------------------+
-  |=============== LOADING JSON's =================| 
-  +------------------------------------------------*/
+    |================ LOADING JSON's =================| 
+    +------------------------------------------------*/
     const jsonDirectoryPath = process.env.JSON_PATH;
     if (!jsonDirectoryPath) {
         return "Erro: JSON_PATH não definido";
@@ -43,7 +43,7 @@ async function createAndSaveEmbeddings() {
         return "Nenhum documento extraído dos arquivos JSON.";
     }
     console.log("Total de documentos carregados");
- /*------------------------------------------------+
+  /*------------------------------------------------+
   |=============== SPLITTING TEXT =================|
   +------------------------------------------------*/
     console.log("Dividindo documentos...");
@@ -64,8 +64,8 @@ async function createAndSaveEmbeddings() {
         fs.mkdirSync(DATABASE_DIRECTORY, { recursive: true });
     }
 
-    /*------------------------------------------------+
-  |===== GENERATING EMBEDDINGS / VECTOR STORE =====|
+  /*------------------------------------------------+
+  |===== GENERATING EMBEDDINGS / VECTOR STORE ======|
   +------------------------------------------------*/
     try {
         const embeddings = new OpenAIEmbeddings({
@@ -117,7 +117,7 @@ async function loadRetrieverFromStore() {
     }
 
     try {
-        /*------------------------------------------------+
+    /*------------------------------------------------+
     |======= GENERATING EMBEDDINGS FROM QUERY =======|
     +------------------------------------------------*/
         const embeddings = new OpenAIEmbeddings({
@@ -125,8 +125,8 @@ async function loadRetrieverFromStore() {
             model: "text-embedding-3-large",
         });
 
-        /*------------------------------------------------+
-    |======= SET RETRIEVER FROM VECTOR STORE =======|
+    /*------------------------------------------------+
+    |======== SET RETRIEVER FROM VECTOR STORE ========|
     +------------------------------------------------*/
         const vectorStore = await FaissStore.load(FAISS_INDEX_PATH, embeddings);
         console.log("Vector Store carregado com sucesso.");

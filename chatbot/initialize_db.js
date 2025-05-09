@@ -1,6 +1,9 @@
 require("dotenv").config();
 const { createAndSaveEmbeddings } = require("./config_model/db_utils.js");
 
+/*------------------------------------------------+
+|=============== CALL DB FUNCTION ================|
++------------------------------------------------*/
 async function main() {
   console.log("Iniciando geração de embeddings...");
   try {

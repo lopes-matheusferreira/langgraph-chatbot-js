@@ -25,7 +25,7 @@ const checkIfRetriever = new ChatOpenAI({
 |============== PROMPT TEMPLATES =================|
 +------------------------------------------------*/
 
-//===========  FINAL ANSWER  ===========//
+ //===========  FINAL ANSWER  ===========//
 //========       PROMPT        ========//
 const systemInstructions = `
 **Contexto**:
@@ -74,7 +74,7 @@ Se atente ao fato de que se for apenas uma lista, sem informações complexas, v
 - Usuário: "Me fale mais sobre eles" (após REPUBLICANOS) Sistema: "Sansão Pereira, nascido em 24/10/1960, atua principalmente em saúde e trânsito. Não tenho informações adicionais sobre André Santos."]
 `;
 
-//==========    RETRIEVER     ==========//
+ //==========    RETRIEVER     ==========//
 //========       PROMPT        ========//
 const retrievalPromptTemplate = ChatPromptTemplate.fromMessages([
     ['system', `[Você é um assistente especializado em gerar queries otimizadas para um retriever de documentos. Sua tarefa é analisar a última pergunta do usuário e o contexto da conversa (mensagens recentes) para criar uma query clara, específica e concisa que será usada para buscar documentos relevantes.
@@ -105,7 +105,8 @@ Lembre-se que o tema desse projeto é Câmara Municipal de São Paulo e seus ver
 Procure corrigir erros de português, quando necessário.
 
 Sempre que o input pedir informações genéricas sobre algum vereador, especifique, biografia do vereador. Por exemplo: Usuário:"Me fale sobre Sandra Tadeu" Query: "Me fale sobre a biografia de Sandra Tadeu".
-Usuário:"Me fale mais sobre eles" - Query: "Me fale sobre a biografia de (mencione todas as entidades coerentes ao contexto)."
+Usuário:"Me fale mais sobre eles" - Query: "Me fale sobre a biografia de (NESSE CASO, mencione todas as entidades coerentes ao contexto)."
+
 
 É importante ressaltar que on inputs que você receberá podem ser de diversos tipos, como agradecimentos, pedidos de desculpas, saudações... Nesses casos, entenda
 o que o usuário quis expressar e gere uma query que exija pouco do retriever e não altere a intenção do usuário.
@@ -115,7 +116,7 @@ Por exemplo: "Que bacana, você tem sido útil!" - Aqui você pode gerar uma que
 Tome muito cuidado para não alterar o sentido do que o usuário quis expressar. Deixe que o modelo final, decida se é parte do escopo ou não. Apenas fria e diretamente, execute sua função.
 
 **Regra crítica**: Sempre que você receber um input e identificar que o usuário está querendo saber a lista completa de vereadores atuais, com perguntas como:
-"Quem são os atuais vereadores?", "Me fale a lista completa de vereadores" e afins, você deve gerar EXATAMENTE a query: "lista completa de vereadores"
+"Quem são os atuais vereadores?", "Me fale a lista completa de vereadores" e afins, você deve gerar EXATAMENTE a query: "lista completa de vereadores" (Nesse caso, não adicione entidades. Por exemplo: Se o usuário pedir "Quem são os atuais vereadores da Câmara?" ou afins, não coloque a entidade 'Câmara' na query, NESSE CASO, gere "lista completa de vereadores")
 Preste atenção, caso seja de um partido específico ou qualquer outra lista, especifique o partido solicitado. Por exemplo:
 "Me fale a lista completa de vereadores do PSOL" você deve gerar a query: "lista completa de vereadores do PSOL"
 
@@ -125,7 +126,7 @@ Caso as informações sejam inconclusivas para gerar uma query, informe o retrie
     ['human', 'Contexto da conversa: {context}\nÚltima pergunta: {question}'],
 ]);
 
-//=========  INPUT CLASSIFIER  =========//
+ //=========  INPUT CLASSIFIER  =========//
 //========       PROMPT        ========//
 const checkIfRetrieverPromptTemplate = ChatPromptTemplate.fromMessages([
     ['system', `[Você é um componente de sistema que determina se uma pergunta necessita de busca em base de dados.
@@ -177,7 +178,7 @@ const determineRetrievalNeed = async (lastMessage, recentMessages, { checkIfRetr
             const queryResponse = await retrieval_llm.invoke(retrievalPrompt);
             retrieverQuery = queryResponse.content.trim();
         } catch (error) {
-            console.error('Error generating query:', error);
+            console.log('Error generating query:', error);
         }
     }
 
@@ -222,13 +223,13 @@ const handleRetrieverResponse = async (query, recentMessages, trimmedMessages, l
 };
 
 const logDebugInfo = (lastMessage, query, recentMessages, relevantDocs, response) => {
-    console.log('\n===== DEBUG INFORMATION =====');
-    console.log('Pergunta original:', lastMessage);
-    console.log('Query do retriever:', query);
-    console.log('Mensagens recentes:', recentMessages);
-    console.log('Documentos recuperados:', relevantDocs.map(doc => doc.pageContent));
-    console.log('Resposta bruta:', response);
-    console.log('=============================\n');
+    console.log('\n======================================= DEBUG INFORMATION ========================================');
+    console.log("=> QUESTION:", lastMessage);
+    console.log("=> RETRIEVER QUERY:", query);
+    console.log("=> RECENT MESSAGES:", recentMessages);
+    console.log("=> DOCS:", relevantDocs.map(doc => doc.pageContent));
+    console.log("=> RESPONSE", response);
+    console.log('==================================================================================================\n');
 };
 
 module.exports = {

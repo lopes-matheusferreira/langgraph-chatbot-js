@@ -14,7 +14,6 @@ const {
     checkIfRetriever,
     systemInstructions,
     retrievalPromptTemplate,
-    checkIfRetrieverPromptTemplate,
     createTrimmer,
     determineRetrievalNeed,
     handleDirectResponse,
@@ -22,13 +21,17 @@ const {
 	logDebugInfo
 } = require('./config_model/llm_utils');
 
-// Inicialização do retriever
+/*------------------------------------------------+
+|=============== LOAD RETRIEVER ==================|
++------------------------------------------------*/
 let retriever;
 loadRetrieverFromStore()
     .then(r => { retriever = r; })
     .catch(err => { console.error('Failed to load retriever:', err); });
 
-// Função principal callModel
+/*------------------------------------------------+
+|================ MAIN FUNCTION ==================|
++------------------------------------------------*/
 const callModel = async (state) => {
     const trimmer = createTrimmer();
     
@@ -46,38 +49,47 @@ const callModel = async (state) => {
                 msg?.content &&
                 !msg.content.toLowerCase().includes('olá') &&
                 !msg.content.includes('Sou o agente de IA') &&
-                !msg.content.includes('lista completa de vereadores')
+                !msg.content.includes('Os atuais vereadores da Câmara, separados por partido são')
             )
             .map(msg => msg.content)
-            .join('\n');
-
+			.join('\n');
+		 //=========  WILL WE USE  =========//
+        //========  THE RETRIEVER? ========//
         const { isRetrieverNeeded, retrieverQuery } = await determineRetrievalNeed(
             lastMessage,
             recentMessages,
             { checkIfRetriever, retrievalPromptTemplate, retrieval_llm }
         );
 
-        if (!isRetrieverNeeded) {
+		if (!isRetrieverNeeded) {
+			console.log("\n======== SKIPPING RETRIEVER ========");
+			console.log("\n => GENERATING ANSWER AT:", new Date().toLocaleTimeString())
             return await handleDirectResponse(trimmedMessages, { llm, systemInstructions });
-        }
-
-        if (retrieverQuery === "lista completa de vereadores" || retrieverQuery === "lista completa de vereadores da Câmara"){
-			const formattedList = list;
-			return {
-                messages: [new AIMessage({ content: formattedList })],
-            };
-        }
-
-        return await handleRetrieverResponse(
-            retrieverQuery,
-            recentMessages,
-            trimmedMessages,
-            lastMessage,
-            { llm, systemInstructions, retriever, logDebugInfo }
-        );
-
+		} else {
+			 //=========  WILL WE USER  =========//
+			//======= THE DEFAULT ANSWER? ======//
+			if (retrieverQuery === "lista completa de vereadores" || retrieverQuery === "lista completa de vereadores da Câmara"
+				|| retrieverQuery === "lista completa de vereadores da camara"){
+				console.log("\n======== PREDEFINED RESPONSE ========")
+				console.log("\n => GENERATING ANSWER AT:", new Date().toLocaleTimeString())
+				const formattedList = list;
+				return {
+					messages: [new AIMessage({ content: formattedList })],
+				};
+			} else {		
+			 //=========  YES, WE WILL USE  =========//
+            //========     THE RETRIEVER    ========//
+			return await handleRetrieverResponse(
+				retrieverQuery,
+				recentMessages,
+				trimmedMessages,
+				lastMessage,
+				{ llm, systemInstructions, retriever, logDebugInfo }
+			);
+			}
+		}
     } catch (error) {
-        console.error('Error in callModel:', error);
+        console.log('Error in callModel:', error);
         return {
             messages: [
                 new AIMessage({
@@ -88,7 +100,9 @@ const callModel = async (state) => {
     }
 };
 
-// Configuração do workflow
+/*------------------------------------------------+
+|================== SET GRAPH ====================|
++------------------------------------------------*/
 const workflow = new StateGraph(MessagesAnnotation)
     .addNode('model', callModel)
     .addEdge(START, 'model')

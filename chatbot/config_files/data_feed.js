@@ -1,4 +1,4 @@
-const list = `A lista completa de vereadores é:
+const list = `Os atuais vereadores da Câmara, separados por partido são:
     
     UNIÃO (7 vereadores)
     1. Adrilles Jorge
