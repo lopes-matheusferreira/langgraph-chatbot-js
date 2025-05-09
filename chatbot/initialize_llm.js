@@ -53,8 +53,7 @@ const callModel = async (state) => {
             )
             .map(msg => msg.content)
 			.join('\n');
-		 //=========  WILL WE USE  =========//
-        //========  THE RETRIEVER? ========//
+        //========  USE RETRIEVER? ========//
         const { isRetrieverNeeded, retrieverQuery } = await determineRetrievalNeed(
             lastMessage,
             recentMessages,
@@ -66,8 +65,7 @@ const callModel = async (state) => {
 			console.log("\n => GENERATING ANSWER AT:", new Date().toLocaleTimeString())
             return await handleDirectResponse(trimmedMessages, { llm, systemInstructions });
 		} else {
-			 //=========  WILL WE USER  =========//
-			//======= THE DEFAULT ANSWER? ======//
+		//======= DEFAULT ANSWER? ======//
 			if (retrieverQuery === "lista completa de vereadores" || retrieverQuery === "lista completa de vereadores da Câmara"
 				|| retrieverQuery === "lista completa de vereadores da camara"){
 				console.log("\n======== PREDEFINED RESPONSE ========")
@@ -77,8 +75,7 @@ const callModel = async (state) => {
 					messages: [new AIMessage({ content: formattedList })],
 				};
 			} else {		
-			 //=========  YES, WE WILL USE  =========//
-            //========     THE RETRIEVER    ========//
+        //===========   USE RETRIEVER   ===========//
 			return await handleRetrieverResponse(
 				retrieverQuery,
 				recentMessages,
